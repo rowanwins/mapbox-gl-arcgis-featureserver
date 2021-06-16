@@ -1,0 +1,14 @@
+{
+  "extends": "mourner",
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "space-before-function-paren": 0,
+    "semi": 0,
+    "no-setter-return": 0,
+    "no-dupe-else-if": 0,
+    "no-import-assign": 0
+  }
+}
