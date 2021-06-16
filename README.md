@@ -3,6 +3,8 @@ A library for retrieving features from an ArcGIS FeatureServer or MapServer. Thi
 
 By default it requests data using the arcgis `pbf` format to minimise payload size, however if that is not available it attempts to use the `geojson` format.
 
+**[Check out the demo](https://rowanwins.github.io/mapbox-gl-arcgis-featureserver/)**
+
 **Note** This library is compatible with both mapbox-gl and maplibre-gl.
 
 **ArcGIS Compatibility** This library relies on ArcGIS Enterprise/Server v10.4+. In v10.4 (Feb 2016) the `geojson` format was added as a supported format. In v10.7 (Mar 2019) the `pbf` format was added. ArcGIS Online meets these requirements. 
@@ -59,7 +61,9 @@ This library exposes a single `FeatureService` class
 | `from` | `Date` | | A start date for a time-enabled layer. |
 | `to` | `Date` | | An end date for a time-enabled layer. |
 | `useSeviceBounds` | `Boolean` | `true` | Only retrieve data for those areas within the extent advertised by the service metadata. |
-| `projectionEndpoint` | `String` | First tries to find a project endpoint on the Server instance based on the service URL, but falls back to using `https://tasks.arcgisonline.com/arcgis/rest/services/Geometry/GeometryServer/project` if it can't find one. | A url of an ArcGIS Server Geometry Server which is called if the extent of the services isn't in EPSG4326. The fallback uses the ArcGIS Online instance, however please ensure that you are using the service within the [Esri licensing arrangements](https://developers.arcgis.com/faq/#licensing).|
+| `projectionEndpoint` | `String` | * See note below | A url of an ArcGIS Server Geometry Server which is called if the extent of the services isn't in EPSG4326. The fallback uses the ArcGIS Online instance, however please ensure that you are using the service within the [Esri licensing arrangements](https://developers.arcgis.com/faq/#licensing).|
+
+*Note* First tries to find a project endpoint on the Server instance based on the service URL, but falls back to using `https://tasks.arcgisonline.com/arcgis/rest/services/Geometry/GeometryServer/project` if it can't find one. 
 
 ### Properties
 | Method  | Description |
