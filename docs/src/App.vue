@@ -5,7 +5,7 @@
 
       <h4>Sample services</h4>
 
-      <a-radio-group @change="changeLayer" defaultValue="Kentuky Counties">
+      <a-radio-group @change="changeLayer" defaultValue="Kentucky Counties">
         <a-radio v-for="option in options" :key="option.name" :value="option.name">{{option.name}}</a-radio>
       </a-radio-group>
 
@@ -30,22 +30,22 @@ export default {
     },
     data () {
       return {
-        selected: 'Kentuky Counties',
+        selected: 'Kentucky Counties',
         options: [
           {
-            name: 'Kentuky Counties',
+            name: 'Kentucky Counties',
             url: 'https://services2.arcgis.com/CcI36Pduqd0OR4W9/ArcGIS/rest/services/County_Polygon/FeatureServer/0',
             srcName: 'counties-src',
             labelField: 'NAME'
           },
           {
-            name: 'Kentuky Highways',
+            name: 'Kentucky Highways',
             url: 'https://services2.arcgis.com/CcI36Pduqd0OR4W9/ArcGIS/rest/services/KYTC_US_Highway/FeatureServer/0',
             srcName: 'roads-src',
             labelField: 'RD_NAME'
           },
           {
-            name: 'Kentuky Traffic Cameras',
+            name: 'Kentucky Traffic Cameras',
             url: 'https://services2.arcgis.com/CcI36Pduqd0OR4W9/ArcGIS/rest/services/trafficCamerasCur_Prd/FeatureServer/0',
             srcName: 'traffic-src',
             labelField: 'name'
