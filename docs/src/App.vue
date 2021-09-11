@@ -49,7 +49,14 @@ export default {
             url: 'https://services2.arcgis.com/CcI36Pduqd0OR4W9/ArcGIS/rest/services/trafficCamerasCur_Prd/FeatureServer/0',
             srcName: 'traffic-src',
             labelField: 'name'
-          }
+          },
+          // {
+          //   name: 'Token layer ...',
+          //   url: 'https://my-authenticated-layer.com/path/to/rest/services/HiddenBoatTreasures/FeatureServer/42',
+          //   srcName: 'hidden-treasure',
+          //   labelField: 'name',
+          //   token: 'token.....'
+          // }
         ]
       }
     },

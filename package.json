@@ -10,6 +10,8 @@
   ],
   "scripts": {
     "build": "rollup -c",
+    "watch": "rollup -w -c",
+    "prepare": "npm run build",
     "build-docs": "cross-env NODE_ENV=production webpack --config docs/webpack.config.js --mode production --progress --hide-modules",
     "dev": "cross-env webpack-dev-server --config docs/webpack.config.js --mode development --open --hot"
   },
