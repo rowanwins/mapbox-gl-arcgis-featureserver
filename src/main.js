@@ -408,6 +408,9 @@ export default class FeatureService {
     const POWERED_BY_ESRI_ATTRIBUTION_STRING = 'Powered by <a href="https://www.esri.com">Esri</a>'
 
     const attributionController = this._map._controls.find(c => '_attribHTML' in c)
+
+    if (!attributionController) return;
+
     const customAttribution = attributionController.options.customAttribution
 
     if (typeof customAttribution === 'string') {
