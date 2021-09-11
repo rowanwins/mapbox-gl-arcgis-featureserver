@@ -410,9 +410,14 @@ export default class FeatureService {
         this._maxExtent = [extent.xmin, extent.ymin, extent.xmax, extent.ymax]
         this._clearAndRefreshTiles()
       })
-      .catch(() => {
-        this._esriServiceOptions.projectionEndpoint = this._fallbackProjectionEndpoint
-        this._projectBounds()
+      .catch((error) => {
+        // if projection endpoint has already been set to fallback, do not re-request project bounds
+        if (this._projectionEndpointIsFallback()) {
+          throw error
+        } else {
+          this._esriServiceOptions.projectionEndpoint = this._fallbackProjectionEndpoint
+          this._projectBounds()
+        }
       })
   }
 
