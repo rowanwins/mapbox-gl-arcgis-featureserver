@@ -44,7 +44,8 @@ export default {
     methods: {
       setUpLayer (layerOption) {
           layer = new FeatureService(layerOption.srcName, map, {
-            url: layerOption.url
+            url: layerOption.url,
+            token: layerOption.token || null,
           })
 
           map.addLayer({
