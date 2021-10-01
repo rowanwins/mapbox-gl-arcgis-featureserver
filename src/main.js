@@ -6,7 +6,6 @@ export default class FeatureService {
     if (!sourceId || !map || !arcgisOptions) throw new Error('Source id, map and arcgisOptions must be supplied as the first three arguments.')
     if (!arcgisOptions.url) throw new Error('A url must be supplied as part of the esriServiceOptions object.')
 
-
     this.sourceId = sourceId
     this._map = map
 
@@ -58,7 +57,6 @@ export default class FeatureService {
           } else {
             this._projectBounds()
           }
-
         }
 
         if (this._esriServiceOptions.outFields !== '*') {
@@ -66,9 +64,7 @@ export default class FeatureService {
         }
 
         this._setAttribution()
-
         this.enableRequests()
-
       })
   }
 
@@ -285,7 +281,7 @@ export default class FeatureService {
 
     if (this._time) params.append('time', this._time)
 
-    this._appendTokenIfExists(params);
+    this._appendTokenIfExists(params)
 
     return new Promise((resolve) => {
       fetch(`${`${this._esriServiceOptions.url}/query?${params.toString()}`}`)
@@ -320,9 +316,9 @@ export default class FeatureService {
   _getServiceMetadata () {
     if (this.serviceMetadata !== null) return Promise.resolve(this.serviceMetadata)
 
-    const params = new URLSearchParams({f: 'json'});
+    const params = new URLSearchParams({f: 'json'})
 
-    this._appendTokenIfExists(params);
+    this._appendTokenIfExists(params)
 
     return new Promise((resolve, reject) => {
       fetch(`${this._esriServiceOptions.url}?${params.toString()}`)
@@ -330,7 +326,7 @@ export default class FeatureService {
         .then((data) => {
           // Esri sends error responses with a 200 status code, so handle them in `.then`
           if (data.error) {
-            throw new Error(JSON.stringify(data.error));
+            throw new Error(JSON.stringify(data.error))
           }
           this.serviceMetadata = data
           resolve(this.serviceMetadata)
@@ -362,7 +358,7 @@ export default class FeatureService {
       f: 'geojson'
     })
 
-    this._appendTokenIfExists(params);
+    this._appendTokenIfExists(params)
 
     return new Promise((resolve) => {
       this._requestJson(`${this._esriServiceOptions.url}/query?${params.toString()}`)
@@ -381,7 +377,7 @@ export default class FeatureService {
       f: 'geojson'
     })
 
-    this._appendTokenIfExists(params);
+    this._appendTokenIfExists(params)
 
     return new Promise((resolve) => {
       this._requestJson(`${this._esriServiceOptions.url}/query?${params.toString()}`)
@@ -401,7 +397,7 @@ export default class FeatureService {
     })
 
     if (!this._projectionEndpointIsFallback()) {
-      this._appendTokenIfExists(params);
+      this._appendTokenIfExists(params)
     }
 
     this._requestJson(`${this._esriServiceOptions.projectionEndpoint}?${params.toString()}`)
@@ -442,7 +438,7 @@ export default class FeatureService {
 
     const attributionController = this._map._controls.find(c => '_attribHTML' in c)
 
-    if (!attributionController) return;
+    if (!attributionController) return
 
     const customAttribution = attributionController.options.customAttribution
 
@@ -464,7 +460,7 @@ export default class FeatureService {
   }
 
   _appendTokenIfExists(params) {
-    const token = this._esriServiceOptions.token;
+    const token = this._esriServiceOptions.token
     if (token !== null) {
       params.append('token', token)
     }
