@@ -388,9 +388,9 @@ export default class FeatureService {
       outSR: 4326,
       f: 'json'
     })
-    let fetchOptions = this._esriServiceOptions.fetchOptions
+    let fetchOptions = {}
     if (!this._projectionEndpointIsFallback()) {
-      fetchOptions = {}
+      fetchOptions = this._esriServiceOptions.fetchOptions
       this._appendTokenIfExists(params)
     }
 
