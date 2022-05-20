@@ -26,7 +26,8 @@ export default class FeatureService {
       f: 'pbf',
       useSeviceBounds: true,
       projectionEndpoint: `${arcgisOptions.url.split('rest/services')[0]}rest/services/Geometry/GeometryServer/project`,
-      token: null
+      token: null,
+      fetchOptions: null
     }, arcgisOptions)
 
     this._fallbackProjectionEndpoint = 'https://tasks.arcgisonline.com/arcgis/rest/services/Geometry/GeometryServer/project'
