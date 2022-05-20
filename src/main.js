@@ -285,9 +285,7 @@ export default class FeatureService {
 
     return new Promise((resolve) => {
       fetch(`${`${this._esriServiceOptions.url}/query?${params.toString()}`}`, this._esriServiceOptions.fetchOptions)
-                .then((response) => { //eslint-disable-line
-          return this._esriServiceOptions.f === 'pbf' ? response.arrayBuffer() : response.json()
-        })
+        .then(response => (this._esriServiceOptions.f === 'pbf' ? response.arrayBuffer() : response.json()))
         .then((data) => {
           let out
           try {
@@ -319,20 +317,15 @@ export default class FeatureService {
     const params = new URLSearchParams({f: 'json'})
 
     this._appendTokenIfExists(params)
-
-    return new Promise((resolve, reject) => {
-      fetch(`${this._esriServiceOptions.url}?${params.toString()}`, this._esriServiceOptions.fetchOptions)
-        .then(response => response.json())
-        .then((data) => {
-          // Esri sends error responses with a 200 status code, so handle them in `.then`
-          if (data.error) {
-            throw new Error(JSON.stringify(data.error))
-          }
-          this.serviceMetadata = data
-          resolve(this.serviceMetadata)
-        })
-        .catch(err => reject(err))
-    })
+    return this._requestJson(`${this._esriServiceOptions.url}?${params.toString()}`, this._esriServiceOptions.fetchOptions)
+      .then((data) => {
+        // Esri sends error responses with a 200 status code, so handle them in `.then`
+        if (data.error) {
+          throw new Error(JSON.stringify(data.error))
+        }
+        this.serviceMetadata = data
+        return (this.serviceMetadata)
+      })
   }
 
   getFeaturesByLonLat(lnglat, radius, returnGeometry) {
