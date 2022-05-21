@@ -1,3 +1,6 @@
+## 0.0.6
+- Fix conditional on fetchOptions 
+
 ## 0.0.5
 - Remove stray console
 
