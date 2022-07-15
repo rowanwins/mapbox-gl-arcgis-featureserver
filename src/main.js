@@ -54,7 +54,6 @@ export default class FeatureService {
           const serviceExtent = this.serviceMetadata.extent
           if (serviceExtent.spatialReference.wkid === 4326) {
             this._setBounds([serviceExtent.xmin, serviceExtent.ymin, serviceExtent.xmax, serviceExtent.ymax])
-            this._clearAndRefreshTiles()
           } else {
             this._projectBounds()
           }
@@ -66,6 +65,7 @@ export default class FeatureService {
 
         this._setAttribution()
         this.enableRequests()
+        this._clearAndRefreshTiles()
       })
   }
 
@@ -163,8 +163,10 @@ export default class FeatureService {
     const bounds = this._map.getBounds().toArray()
     const primaryTile = tilebelt.bboxToTile([bounds[0][0], bounds[0][1], bounds[1][0], bounds[1][1]])
 
-    if (this._esriServiceOptions.useSeviceBounds && !this._doesTileOverlapBbox(this._maxExtent, bounds)) {
-      return
+    if (this._esriServiceOptions.useSeviceBounds) {
+      if (this._maxExtent[0] !== -Infinity && !this._doesTileOverlapBbox(this._maxExtent, bounds)) {
+        return
+      }
     }
 
     // If we're not using a static zoom level we'll round to the nearest even zoom level
@@ -399,7 +401,6 @@ export default class FeatureService {
       .then((data) => {
         const extent = data.geometries[0]
         this._maxExtent = [extent.xmin, extent.ymin, extent.xmax, extent.ymax]
-        this._clearAndRefreshTiles()
       })
       .catch((error) => {
         // if projection endpoint has already been set to fallback, do not re-request project bounds

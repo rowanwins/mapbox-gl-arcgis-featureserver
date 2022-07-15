@@ -1,6 +1,6 @@
 {
   "name": "mapbox-gl-arcgis-featureserver",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A small library for requesting features from an arcgis feature server using tiles",
   "main": "dist/mapbox-gl-arcgis-featureserver.js",
   "module": "dist/mapbox-gl-arcgis-featureserver.esm.js",
@@ -15,7 +15,7 @@
     "build-docs": "cross-env NODE_ENV=production webpack --config docs/webpack.config.js --mode production --progress --hide-modules",
     "dev": "cross-env webpack-dev-server --config docs/webpack.config.js --mode development --open --hot"
   },
-  "author": "",
+  "author": "Rowan Winsemius",
   "license": "Apache-2.0",
   "dependencies": {
     "@mapbox/tilebelt": "^1.0.2",
@@ -48,5 +48,18 @@
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
-  }
+  },
+  "repository": "github:rowanwins/mapbox-gl-arcgis-featureserver",
+  "bugs": {
+    "url": "https://github.com/rowanwins/mapbox-gl-arcgis-featureserver/issues"
+  },
+  "keywords": [
+    "mapbox-gl-js",
+    "mapbox-gl",
+    "maplibre-gl-js",
+    "maplibre-gl",
+    "esri",
+    "arcgis",
+    "featureserver"
+  ]
 }

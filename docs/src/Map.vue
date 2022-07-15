@@ -6,6 +6,7 @@
 import { Map, Popup } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import FeatureService from '../../src/main'
+// import FeatureService from '../../dist/mapbox-gl-arcgis-featureserver.js'
 
 let layer = null
 let map = null

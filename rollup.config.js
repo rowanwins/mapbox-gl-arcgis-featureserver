@@ -9,22 +9,19 @@ const output = (input, file, format, plugins) => ({
     file,
     format
   },
-  external: ['pbf'],
   plugins
 })
 
 export default [
   output('./src/main.js', './dist/mapbox-gl-arcgis-featureserver.js', 'umd', [
-    commonjs(),
-    resolve()
+    commonjs()
   ]),
   output('./src/main.js', './dist/mapbox-gl-arcgis-featureserver.min.js', 'umd', [
-    commonjs(),
     resolve(),
+    commonjs(),
     terser()
   ]),
   output('./src/main.js', './dist/mapbox-gl-arcgis-featureserver.esm.js', 'esm', [
-    commonjs(),
-    resolve()
+    commonjs()
   ])
 ]
