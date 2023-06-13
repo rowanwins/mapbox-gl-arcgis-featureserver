@@ -1,3 +1,6 @@
+## 0.0.8
+- Add catch for source not being ready
+
 ## 0.0.7
 - Make the `useSeviceBounds` option non-blocking so that data draws quicker and only the bounds check only gets applied to subsequent requests 
 - Update build process and packaging

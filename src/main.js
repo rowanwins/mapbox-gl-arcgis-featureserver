@@ -302,12 +302,9 @@ export default class FeatureService {
   }
 
   _updateFcOnMap(fc) {
-    const source = this._map.getSource(this.sourceId);
-    if(source){
+    const source = this._map.getSource(this.sourceId)
+    if (source) {
       source.setData(fc)
-    }
-    else{
-      console.warn(`Cannot find source with id: ${this.sourceId}`)
     }
   }
 

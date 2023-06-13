@@ -1,6 +1,6 @@
 {
   "name": "mapbox-gl-arcgis-featureserver",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A small library for requesting features from an arcgis feature server using tiles",
   "main": "dist/mapbox-gl-arcgis-featureserver.js",
   "module": "dist/mapbox-gl-arcgis-featureserver.esm.js",
