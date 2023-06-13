@@ -302,7 +302,13 @@ export default class FeatureService {
   }
 
   _updateFcOnMap(fc) {
-    this._map.getSource(this.sourceId).setData(fc)
+    const source = this._map.getSource(this.sourceId);
+    if(source){
+      source.setData(fc)
+    }
+    else{
+      console.warn(`Cannot find source with id: ${this.sourceId}`)
+    }
   }
 
   _doesTileOverlapBbox(tile, bbox) {
